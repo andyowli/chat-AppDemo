@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+	</head>
+	<body>
+	<!--头部-->
+	<!--<header class="mui-bar mui-bar-nav" style="background-color: rgba(51,51,51,1);">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>
+	    <h1 class="mui-title" style="color: white;">微信</h1>
+	</header>-->
+	<!--主题内容-->
+	<div class="mui-content">
+	     <ul class="mui-table-view">
+	         <li class="mui-table-view-cell mui-media">
+	             <a href="javascript:;" title="幸福">
+	                 <img class="mui-media-object mui-pull-left" src="img/3.jpg">
+	                 <div class="mui-media-body">
+	                                       幸福
+	                     <p class="mui-ellipsis">能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+	                 </div>
+	             </a>
+	         </li>
+	         <li class="mui-table-view-cell mui-media">
+	             <a href="javascript:;" title="木屋">
+	                 <img class="mui-media-object mui-pull-left" src="img/home.jpg">
+	                 <div class="mui-media-body">
+	                                      木屋
+	                     <p class="mui-ellipsis">想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
+	                 </div>
+	             </a>
+	         </li>
+	         <li class="mui-table-view-cell mui-media">
+	             <a href="javascript:;" title="CBD">
+	                 <img class="mui-media-object mui-pull-left" src="img/YINHUA.jpg">
+	                 <div class="mui-media-body">
+	                    CBD
+	                     <p class="mui-ellipsis">烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+	                 </div>
+	             </a>
+	         </li>
+	         <li class="mui-table-view-cell mui-media">
+	             <a href="javascript:;" title="清秀">
+	                 <img class="mui-media-object mui-pull-left" src="img/timg.jpg">
+	                 <div class="mui-media-body">
+	                                      清秀
+	                     <p class="mui-ellipsis">烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+	                 </div>
+	             </a>
+	         </li>
+	         <li class="mui-table-view-cell mui-media">
+	             <a href="javascript:;" title="及时雨">
+	                 <img class="mui-media-object mui-pull-left" src="img/2.jpg">
+	                 <div class="mui-media-body">
+	                                      及时雨
+	                     <p class="mui-ellipsis">烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
+	                 </div>
+	             </a>
+	         </li>
+	     </ul>
+	</div>
+	</body>
+</html>
+<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	mui.init();
+	
+	mui.plusReady(function(){
+		mui('.mui-table-view-cell').on('tap','a',function(){
+			//获取好友名称
+			var title = this.getAttribute('title');
+			//打开聊天页面
+			mui.openWindow({
+			    url:'WEB1/chat.html', 
+			    id:'WEB1/chat.html',
+			    extras:{
+			    	//自定义扩展参数，可以用来处理页面间传值
+			    	name:title
+			    },
+			    show:{
+			      autoShow:true,//页面loaded事件发生后自动显示，默认为true
+			      aniShow:"slide-in-right",//页面显示动画，默认为”slide-in-right“；
+			      duration:200//页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+			    },
+			    waiting:{
+			      autoShow:true,//自动显示等待框，默认为true
+			      title:'正在加载...',//等待对话框上显示的提示内容
+			    } 
+			})
+		}) 
+	})
+</script>

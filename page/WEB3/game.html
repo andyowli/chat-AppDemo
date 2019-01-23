@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" type="text/css" href="../css/mui.css"/>
+		<!--App自定义的css-->
+		<!--<link rel="stylesheet" type="text/css" href="../css/app.css"/>-->
+		
+		<style type="text/css">
+			.img{
+				height: 411px;
+			}
+			.btn{
+				position: absolute;
+				left: 80%;
+				top: 22%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">游戏</h1>
+		</header>
+		<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					 <!--额外增加的一个节点(循环轮播：第一个节点是最后一张轮播)--> 
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../img/game/04.jpg" class="img">
+							<p class="mui-slider-title">明日之后</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../img/game/01.jpg" class="img">
+							<p class="mui-slider-title">完美神魔大陆</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../img/game/02.png" class="img">
+							<p class="mui-slider-title">赤壁征战天下</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../img/game/03.jpg" class="img">
+							<p class="mui-slider-title">天书奇谈还是当面的味道</p>
+						</a>
+					</div>
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../img/game/01.jpg" class="img">
+							<p class="mui-slider-title">完美神魔大陆</p>
+						</a>
+					</div>
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../img/game/04.jpg" class="img">
+							<p class="mui-slider-title">明日之后</p>
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator mui-text-right">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+		</div>
+		
+		<ul class="mui-table-view">
+		    <li class="mui-table-view-cell mui-media">
+		        <a href="javascript:;">
+		            <img class="mui-media-object mui-pull-left" src="../img/game/10.png">
+		            <div class="mui-media-body">
+		                绝地求生：刺激战场
+		                <p class="mui-ellipsis">正版还原 | 大吉大利 | 组队开黑</p>
+		                <button class="btn" onclick="openApps()">进入</button>
+		            </div>
+		        </a>
+		    </li>
+		    <li class="mui-table-view-cell mui-media">
+		        <a href="javascript:;">
+		            <img class="mui-media-object mui-pull-left" src="../img/game/11.png">
+		            <div class="mui-media-body">
+		                王者荣耀
+		                <p class="mui-ellipsis">MOBA | 最强王者 | 5v5</p>
+		                <button class="btn" onclick="openApps()">进入</button>
+		            </div>
+		        </a>
+		    </li>
+		    <li class="mui-table-view-cell mui-media">
+		        <a href="javascript:;">
+		            <img class="mui-media-object mui-pull-left" src="../img/game/12.png">
+		            <div class="mui-media-body">
+		                部落冲突
+		                <p class="mui-ellipsis">部落建造 | 时时开战</p>
+		                <button class="btn">进入</button>
+		            </div>
+		        </a>
+		    </li>
+		</ul>
+	</body>
+	<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		var slider = mui("#slider");
+		document.getElementById("switch").addEventListener('toggle', function(e) {
+			if (e.detail.isActive) {
+				slider.slider({
+					interval: 5000
+				});
+			} else {
+				slider.slider({
+					interval: 0
+				});
+			}
+		});
+		
+		function openApps() {
+		    if (navigator.userAgent.match(/Android/)) {//android
+		        if (navigator.userAgent.match(/Chrome/)) {//chrome
+		            setTimeout(function() {
+		                if (!document.webkitHidden)
+		                    window.location = "market://***";//打开市场
+		            }, 1000);
+		            window.location = "myapp://custom_url";//打开自己的应用
+		        } else {
+		            // 通用的方式
+		            var iframe = document.createElement("iframe");
+		            iframe.style.border = "none";
+		            iframe.style.width = "1px";
+		            iframe.style.height = "1px";
+		            var t = setTimeout(function() {
+		                window.location = "market://***";//打开市场
+		            }, 1000);
+		            iframe.onload = function () { 
+						clearTimeout(t) 
+					};
+		            iframe.src = "myapp://custom_url";//打开自己的应用
+		            document.body.appendChild(iframe);
+		        }
+		     } else if (navigator.userAgent.match(/iPhone|iPad|iPod/)) {// IOS
+		         setTimeout(function() {
+		             if (!document.webkitHidden)//判断是不是可见
+		                 window.location = "itms://itunes.apple.com/****";//到苹果的商店...
+		         }, 1000);
+		 
+		         window.location = "myapp://custom_url";//打开自己的应用
+		 
+		     } else {//非手机活pad端
+		        alert("请在手机端打开");//或者弄个其他连接什么的
+		     }
+		}
+	</script>
+</html>

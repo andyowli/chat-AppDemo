@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+		
+		<style type="text/css">
+			.mui-table-view-cell{
+				font-size: 18px;
+				line-height: 30px;
+			}
+			.mui-table-view-cell img{
+				width: 30px;
+				height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+	<!--头部-->
+	<!--<header class="mui-bar mui-bar-nav" style="background-color: rgba(51,51,51,1);">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>
+	    <h1 class="mui-title" style="color: white;">微信</h1>
+	</header>-->
+	<!--主题内容-->
+	<div class="mui-content">
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell mui-left" id="friends">
+				<img src="img/pyq.png" align="absmiddle"/>&nbsp;&nbsp;火柴圈
+			</li>
+		</ul>
+		<br />
+		<ul class="mui-table-view">
+			<li class="mui-table-view-cell mui-left" id="saoma">
+				<img src="img/saoma.jpg" align="absmiddle"/>&nbsp;&nbsp;扫一扫
+			</li>
+			<li class="mui-table-view-cell mui-left" id="play">
+				<img src="img/game.jpg" align="absmiddle"/>&nbsp;&nbsp;游戏
+			</li>
+		</ul>
+	</div>
+	</body>
+</html>
+<script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	mui.init();
+	mui.plusReady(function(){
+		var friends = document.getElementById('friends');
+		var saoma = document.getElementById('saoma');
+		var play = document.getElementById('play');
+		friends.addEventListener('tap',function(){
+			mui.openWindow({
+			    url:'WEB3/fdHeader.html',   
+			    id:'WEB3/fdHeader.html'
+			})
+		})
+		
+		saoma.addEventListener('tap',function(){
+			mui.openWindow({
+			    url:'WEB3/saoma.html',   
+			    id:'WEB3/saoma.html'
+			})
+		})
+		
+		play.addEventListener('tap',function(){
+			mui.openWindow({
+			    url:'WEB3/game.html',   
+			    id:'WEB3/game.html'
+			})
+		})
+	})
+</script>

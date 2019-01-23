@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/mui.css"/>
+		
+		<style type="text/css">
+			.time{
+	            position: absolute;
+	            right: 2px;
+	            top: 4px;
+	            background-color: #fb4746;
+	            color: #fff;
+	            border-radius: 30px;
+	            border: none;
+	        }
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">注册</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+				<div class="mui-input-row">
+			        <label>手机</label>
+			        <input type="tel" class="mui-input-clear" placeholder="请输入手机号" id="phone">
+			    </div>
+			    <div class="mui-input-row">
+			        <label>账号</label>
+			        <input type="text" id="username" class="mui-input-clear" placeholder="请输入账号">
+			    </div>
+			    <div class="mui-input-row mui-password">
+			        <label>密码</label>
+			        <input type="password" id="password" class="mui-input-password" placeholder="请输入密码">
+			        <span class="mui-icon mui-icon-eye"></span>
+			    </div>
+			    <div class="mui-input-row">
+			        <label>验证码</label>
+	                <input type="text" id="verifycode" class="mui-input" placeholder="验证码"/>
+	                <input type="button" id="btn" value="获取验证码" onclick="settime(this)" style="position: absolute;left: 74%;top:10%;background-color: #fb4746; color: #fff;border-radius: 30px;border: none;width: 26%;padding: 6px;"/>
+			    </div>
+			</form>
+			<div class="mui-content-padded">
+				<button type="button" id="btn2" class="mui-btn mui-btn-primary" style="width: 100%;height: 60px;font-size: 16px;" onclick="settime(this)">确认</button>
+			</div>
+		</div>
+	</body>
+</html>
+<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var countdown=60; 
+	function settime(val) { 
+		var phone = $('#phone').val();
+		if(phone == '') {
+			mui.toast('手机号不能为空！');
+			return;
+		}
+		if (countdown == 0) { 
+		val.removeAttribute("disabled"); 
+		val.value="获取验证码"; 
+		countdown = 60; 
+		} else { 
+			val.setAttribute("disabled", true); 
+			val.value="重新发送(" + countdown + ")"; 
+			countdown--; 
+		} 
+		setTimeout(function() { 
+			settime(val) 
+		},1000) 
+	}
+	
+	$('#btn2').click(function() {
+			var phone = $('#phone').val(),
+				username = $('#username').val(),
+				password = $('#password').val(),
+				verifycode = $('#verifycode').val();
+			if(phone == '') {
+				mui.toast('手机号不能为空！');
+				return;
+			}
+			if(username == '') {
+				mui.toast('账号不能为空！');
+				return;
+			}
+			if(password==''){
+				mui.toast('密码不能为空');
+				return;
+			}		
+			
+			if(verifycode==''){
+				mui.toast('验证码不能为空');
+				return;
+			}		
+	});
+</script>

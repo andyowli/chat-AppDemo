@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	
+      	//mui加载完成事件
+      	mui.plusReady(function(){
+      		var webPage = ["web1.html","web2.html","web3.html","web4.html"];
+      		//子页面显示位置
+      		var webPageStyle={
+      			top:'44px',
+      			bottom:'50px'
+      		}
+      		//获取主webView
+      		var mainView = plus.webview.currentWebview();
+      		for(var i = 0;i<webPage.length;i++){
+      			var url = webPage[i];
+    			//根据url创建子页面的webView
+    			var webView = plus.webview.create(url,url,webPageStyle);
+    			//默认设置每个子webView处于隐藏
+    			webView.hide();
+    	 		//主和子同时显示,将每个子webView加入到主WebView中
+    			mainView.append(webView);
+      		}
+      		//设置web1.html子页面显示,根据id来设置
+      		plus.webview.show(webPage[0]);
+      		
+      		
+      		//给每个导航栏注册用户的轻击事件，手机中onclick,click无效
+      		mui('.mui-bar-tab').on('tap','a',function(){
+      			//获取当前事件源对象属性值
+      			var id = this.getAttribute('href');
+      			//底部导航栏对应子页面显示
+      			plus.webview.show(id);
+      		})
+      	})
+    </script>
+</head>
+<body>
+	<!--头部-->
+	<header class="mui-bar mui-bar-nav" style="background-color: rgba(51,51,51,1);">
+	    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>
+	    <h1 class="mui-title" style="color: white;">火柴</h1>
+	</header>
+	<!--主题内容-->
+	
+	<!--底部导航 -->
+	<nav class="mui-bar mui-bar-tab">
+	    <a class="mui-tab-item mui-active" href="web1.html">
+	        <span class="mui-icon mui-icon-chatbubble"></span>
+	        <span class="mui-tab-label">信息</span>
+	    </a>
+	    <a class="mui-tab-item" href="web2.html">
+	        <span class="mui-icon mui-icon-contact"></span>
+	        <span class="mui-tab-label">通讯录</span>
+	    </a>
+	    <a class="mui-tab-item" href="web3.html">
+	        <span class="mui-icon mui-icon-navigate"></span>
+	        <span class="mui-tab-label">发现</span>
+	    </a>
+	    <a class="mui-tab-item" href="web4.html">
+	        <span class="mui-icon mui-icon-gear"></span>
+	        <span class="mui-tab-label">我</span>
+	    </a>
+	</nav>
+</body>
+</html>
